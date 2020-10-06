@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    .create-blog.content
+        form(action="", method="post")
+            label(for="title") Book title:
+            input(type="text", name="title" required)
+            label(for="title") ISBN:
+            input(type="number", name="isbn")
+            label(for="title") Author:
+            input(type="text", name="author" required)
+            label(for="title") Publish Date:
+            input(type="date", name="publishDate" required)
+            label(for="title") Price:
+            input(type="number", name="price" required)
+            button(type="submit") Add
