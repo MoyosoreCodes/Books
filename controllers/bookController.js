@@ -1,48 +1,50 @@
-var Books = require("../models/books");
+var Book = require("../models/books");
 
-
-exports.getAllBooks = (req, res) => {
-    Books.find().then((result) => {
-        res.send(result);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+const home = (req, res) => {
+    res.redirect("/books/viewbooks");
 };
 
-exports.getBookById = (req, res) => {
-    Books.findById({ _id : req.params.id})
-    .then((result) => {
-        res.send(result);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+const createBooks_get = (req, res) => {
+    res.render("newbooks", { title: "New Book"});
 };
 
-exports.addNewBook = (req, res) => {
-    Books.create(req.body)
-    .then((result) => {
-        res.send(result);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+const createBooks = (req, res) => {
+    const book = new Book(req.body);
+
+    book.save()
+        .then((result) => {
+            res.redirect('/books/viewBooks');
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
-exports.updateBooks = (req, res) => {
-    Books.findByIdAndUpdate({_id : req.params.id}, req.body)
-    .then((result) => {
-        res.send(result);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+const viewBooks = (req , res) => {
+    const books = Book.find()
+                 .then((result) => {
+                     res.render("viewBooks", {title: "View", books: result});
+                 })
+                 .catch((err) => {
+                     console.log(err);
+                 });
 };
 
-exports.deleteBook = (req, res) => {
-    Books.findByIdAndRemove({ _id : req.params.id}).then((result) => {
-        res.send(result);
-    })
+const viewBooksById = (req, res) => {
+    const id = req.params.id;
+    Book.findById(id)
+        .then((result) => {
+            res.render('details', {title: "Details", details: result});
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
+module.exports = {
+    home, 
+    createBooks_get,
+    createBooks,
+    viewBooks,
+    viewBooksById
+}

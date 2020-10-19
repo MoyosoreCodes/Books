@@ -1,6 +1,13 @@
 extends layout 
-
+ 
 block content
     .blogs.content
-            h2 All Books
-            p There are no books to display
+        h2 All Books #{books.length}
+        if (books.length > 0)
+            each book in books
+                a(href=`/books/viewBooks/${book._id}`)
+                    h3 #{book.title}
+                    h3 #{book.author}
+                    p.snippet #{book.description}
+        else 
+            p There are no bo}oks to display

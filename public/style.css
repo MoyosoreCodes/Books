@@ -48,17 +48,50 @@ h3{
   text-transform: capitalize;
   margin-bottom: 8px;
 }
+.fa-user-circle-o {
+  color: #222;
+}
+
 .content{
   margin-left: 20px;
 }
-/* index styles */
+
+ /* index styles */
+ .blogs a{
+  display: block;
+  margin: 40px 0;
+  padding-left: 30px;
+  border-left: 6px solid crimson;
+}
+.blogs a:hover h3{
+  color: crimson;
+}
+
 /* details styles */
+.details{
+  position: relative;
+}
+.details h3:hover{
+  color: crimson
+}
+.delete{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  padding: 8px;
+}
+.delete:hover{
+  cursor: pointer;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+}
 /* create styles */
 .create-blog form{
   max-width: 400px;
   margin: 0 auto;
 }
 .create-blog input,
+.create-blog select,
 .create-blog textarea{
   display: block;
   width: 100%;

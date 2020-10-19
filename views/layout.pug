@@ -1,20 +1,8 @@
 block variables
 doctype html
 html
-    head
-        meta(charset = "utf-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Books | #{title} 
-        link(rel="stylesheet", href="/style.css")
+    include ./partials/header
     body
-        nav
-            .site-title
-                a(href="/")
-                h1 BooksDIr
-            ul
-                li
-                a(href="/viewBooks") Books Available
-                li 
-                    a(href="/createBook") Add new Books
+        include ./partials/navbar
         block content
         block view-content

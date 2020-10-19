@@ -2,15 +2,25 @@ extends layout
 
 block content
     .create-blog.content
-        form(action="", method="post")
-            label(for="title") Book title:
+        form(action="/books/createBook", method="post")
+            label Book title:
             input(type="text", name="title" required)
-            label(for="title") ISBN:
+            label ISBN:
             input(type="number", name="isbn")
-            label(for="title") Author:
+            label Author:
+                i.fa.fa-user-circle-o
             input(type="text", name="author" required)
-            label(for="title") Publish Date:
+            label Publish Date:
             input(type="date", name="publishDate" required)
-            label(for="title") Price:
+            label Genre:
+            select(name="genre" required)
+                option(value="") --Select Genre--
+                option(value="Action") Action
+                option(value="Adventure") Adventure
+                option(value="Bio & History") Bio & History
+                option(value="Romance") Romance
+            label Description:
+            textarea( name="description", cols="30", rows="10")                
+            label Price:
             input(type="number", name="price" required)
-            button(type="submit") Add
+            button(type="submit") Submit

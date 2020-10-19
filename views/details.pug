@@ -1,0 +1,14 @@
+extends layout 
+ 
+block content
+    .details.content
+            label By:  
+                h3 #{details.author}
+            .content
+                label Title:
+                    h2  #{details.title}
+                label Description:
+                    p  #{details.description}
+                label Publish Date:
+                    p  #{details.publishDate}
+            a.delete delete

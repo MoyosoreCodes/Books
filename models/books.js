@@ -24,6 +24,13 @@ const bookSchema = new Schema({
         type: Number,
         required: true
     }, 
+    genre: {
+        type: String
+    }, 
+    description: {
+        type: String,
+        default: "No description added"
+    }
 }, {timestamps : true});
 
 const Book = mongoose.model("Book", bookSchema);
