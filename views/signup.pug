@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    .registration
+        form(action="/accounts/signup", method="post")
+            h2 Sign Up
+            label Firstname:
+            input(type="text", name="firstname" required)
+            .firstname.error
+            label Lastname:
+            input(type="text", name="lastname")
+            label Email:
+            input(type="text", name="email" required)
+            label Password:
+            input(type="password", name="password" required)
+            label Gender:
+            select(name="gender" required)
+                option(value="") --Select Gender--
+                option(value="Action") Male
+                option(value="Adventure") Female
+            label Country:
+            input(type="text", name="country" required)         
+            button(type="submit") Sign Up

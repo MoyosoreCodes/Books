@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const app = express();
 
 
@@ -29,6 +30,7 @@ app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
+app.use(cookieParser());
 app.use('/api', require('./routes/api'));
 app.use('/books',require('./routes/web'));
 app.use('/accounts', require('./routes/account'));
