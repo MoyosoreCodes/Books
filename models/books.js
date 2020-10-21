@@ -5,11 +5,11 @@ const Schema = mongoose.Schema;
 const bookSchema = new Schema({
     title: {
         type: String,
-        required: true
+        required: [true, 'You have not entered a book title']
     }, 
     isbn: {
         type: Number,
-        required: true,
+        required: [true, 'isbn number is required'],
         unique: true,
     }, 
     author: {
@@ -18,11 +18,11 @@ const bookSchema = new Schema({
     }, 
     publishDate: {
         type: Date,
-        required: true
+        required: [true, 'Date must be Entered']
     }, 
     price: {
         type: Number,
-        required: true
+        required: [true, 'Price must be Entered']
     }, 
     genre: {
         type: String

@@ -20,7 +20,9 @@ mongoose.connect(dbUri, { useNewUrlParser: true , useUnifiedTopology: true , use
         console.log(err);
     });
 
-
+app.get('/', (req, res) =>{
+    res.redirect('/books/viewBooks');
+});
 
 
 app.set('view engine', 'pug');
@@ -29,3 +31,4 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use('/api', require('./routes/api'));
 app.use('/books',require('./routes/web'));
+app.use('/accounts', require('./routes/account'));
