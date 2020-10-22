@@ -3,12 +3,20 @@ extends layout
 block content
     .details.content
             label By:  
-                h3 #{details.author}
+                a(href='#')
+                    h3 #{details.author}
+            br
             .content
                 label Title:
                     h2  #{details.title}
+                br
                 label Description:
                     p  #{details.description}
+                br
                 label Publish Date:
                     p  #{details.publishDate}
+                br
+                label Price
+                    p.price $#{details.price}
+                img.delete(src="", alt="image should be here", srcset="")
             button(type='submit') purchase

@@ -2,11 +2,13 @@ extends layout
 
 block content
     .registration
-        form(action="/accounts/login", method="post")
+        form
             h2 Sign in
             label Email:
             input(type="text", name="email" )
             label Password:
             input(type="password", name="password")
             button(type="submit") Sign in
-            a(href="/accounts/signup") Don't have an account? Sign Up
+            br
+            .signup-link 
+                a(href="/accounts/signup") Don't have an account? Sign Up

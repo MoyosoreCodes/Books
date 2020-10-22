@@ -2,22 +2,27 @@ extends layout
 
 block content
     .registration
-        form(action="/accounts/signup", method="post")
+        form
             h2 Sign Up
             label Firstname:
             input(type="text", name="firstname" required)
             .firstname.error
             label Lastname:
             input(type="text", name="lastname")
+            .lastname.error
             label Email:
             input(type="text", name="email" required)
+            .email.error
             label Password:
             input(type="password", name="password" required)
+            .password.error
             label Gender:
             select(name="gender" required)
                 option(value="") --Select Gender--
                 option(value="Action") Male
                 option(value="Adventure") Female
             label Country:
-            input(type="text", name="country" required)         
+            input(type="text", name="country" required)  
+            .country.error       
             button(type="submit") Sign Up
+        script(src="/js/signup.js")
