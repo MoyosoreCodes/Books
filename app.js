@@ -6,11 +6,11 @@ const cookieParser = require('cookie-parser');
 const app = express();
 
 
-const dbUri = "mongodb+srv://Moyosore:Moyosore12@cluster0.ky9jk.mongodb.net/books?retryWrites=true&w=majority";
+const dbUri = process.env.MONGODB_URI || "mongodb+srv://Moyosore:Moyosore12@cluster0.ky9jk.mongodb.net/books?retryWrites=true&w=majority";
 const port = 5000;
 
 
-mongoose.connect(dbUri, { useNewUrlParser: true , useUnifiedTopology: true , useFindAndModify: false})
+mongoose.connect(dbUri, { useNewUrlParser: true , useUnifiedTopology: true , useFindAndModify: false, useCreateIndex: true})
     .then((result) => {
         console.log('Connection Succesful');
         app.listen(port, () => {
@@ -22,9 +22,8 @@ mongoose.connect(dbUri, { useNewUrlParser: true , useUnifiedTopology: true , use
     });
 
 app.get('/', (req, res) =>{
-    res.redirect('/books/viewBooks');
+    res.redirect('/accounts/login');
 });
-
 
 app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, "public")));
@@ -32,5 +31,5 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cookieParser());
 app.use('/api', require('./routes/api'));
-app.use('/books',require('./routes/web'));
+app.use('/books', require('./routes/web'))
 app.use('/accounts', require('./routes/account'));

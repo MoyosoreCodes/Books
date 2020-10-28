@@ -9,9 +9,7 @@ form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     //setting errors
-    firstnameError.textContent, lastnameError.textContent, 
-    emailError.textContent, passwordError.textContent,
-    countryError.textContent = '';
+
 
     //get the values
     const firstname = form.firstname.value;
@@ -22,7 +20,7 @@ form.addEventListener('submit', async (e) => {
     const country = form.country.value;
 
     try {
-        const res = await fetch ('accounts/signup', {
+        const res = await fetch ('/accounts/signup', {
             method: 'POST',
             body: JSON.stringify({firstname, lastname, email, password, gender, country}),
             headers: { 'Content-Type' : 'application/json'}
@@ -41,7 +39,7 @@ form.addEventListener('submit', async (e) => {
             location.assign('/books/viewBooks');
         }
     } catch (err) {
-        console(err)
+        console.log(err)
         
     }
 });
