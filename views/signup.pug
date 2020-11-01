@@ -2,7 +2,7 @@ extends layout
 
 block content
     .registration
-        form
+        form(action="/accounts/signup", method="post")
             h2 Sign Up
             label Firstname:
             input(type="text", name="firstname" )
@@ -25,4 +25,3 @@ block content
             input(type="text", name="country" required)  
             .country.error       
             button(type="submit") Sign Up
-        script(src="/js/signup.js")

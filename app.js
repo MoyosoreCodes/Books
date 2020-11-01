@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const authorize = require('./middleware/authorize');
 const app = express();
 
 
@@ -22,7 +23,7 @@ mongoose.connect(dbUri, { useNewUrlParser: true , useUnifiedTopology: true , use
     });
 
 app.get('/', (req, res) =>{
-    res.redirect('/accounts/login');
+    res.redirect('/books/viewBooks');
 });
 
 app.set('view engine', 'pug');
@@ -31,5 +32,5 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cookieParser());
 app.use('/api', require('./routes/api'));
-app.use('/books', require('./routes/web'))
+app.use('/books', authorize.Authorize , require('./routes/web'))
 app.use('/accounts', require('./routes/account'));

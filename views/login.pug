@@ -2,7 +2,7 @@ extends layout
 
 block content
     .registration
-        form
+        form(action="/accounts/login", method="post")
             h2 Sign in
             label Email:
             input(type="text", name="email" )
@@ -14,4 +14,3 @@ block content
             br
             .signup-link 
                 a(href="/accounts/signup") Don't have an account? Sign Up
-        script(src="/js/login.js")

@@ -1,7 +1,7 @@
 var Book = require("../models/books");
-const authorize = require('../middleware/authorize');
 
-const handleErrors = (err) => {
+
+const handleBookErrors = (err) => {
     let errors = {
         title: '',
         isbn: '',
@@ -37,7 +37,7 @@ const createBooks = (req, res) => {
             res.redirect('/books/viewBooks');
         })
         .catch((err) => {
-            const errors = handleErrors(err);
+            const errors = handleBookErrors(err);
             res.json({ errors });
         });
 };
