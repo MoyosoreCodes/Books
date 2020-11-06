@@ -7,6 +7,7 @@ body{
 }
 p, h1, h2, h3, a, ul{
   margin: 0;
+  color: white;
   padding: 0;
   text-decoration: none;
   color: #222;
@@ -19,6 +20,7 @@ nav{
   padding-bottom: 10px;
   border-bottom: 1px solid #ddd;
   text-transform: uppercase;
+  
 }
 nav ul{
   display: flex;
@@ -33,7 +35,7 @@ nav h1{
   font-size: 3em;
 }
 nav p, nav a{
-  color: #777;
+  color: black;
   font-weight: 300;
 }
 footer{
@@ -48,29 +50,120 @@ h3{
   text-transform: capitalize;
   margin-bottom: 8px;
 }
-.fa-user-circle-o {
-  color: #222;
-}
 
 .content{
   margin-left: 20px;
 }
 
  /* index styles */
- .blogs a{
-  display: block;
-  margin: 40px 0;
-  padding-left: 30px;
-  border-left: 6px solid crimson;
+.container {
+  position: absolute;
+  height: 134px;
+  left: 275px;
+  right: 27px;
+  top: 148px;
+  background: lightslategray;
+  box-shadow: 0 5px 12px 0 #dcdeec;
+  border-right: 5px solid crimson;
 }
-.blogs a:hover h3{
-  color: crimson;
+.search-bar input{
+  height: 25px;
+  width:  300px;
+  position: relative;
+  left: 700px;
+  top: 27px;
+  border-radius: 5px;
 }
+.search-bar button {
+  left: 310px;
+  top: 27px;
+  position: relative;
+}
+.sidebar{
+  position: absolute;
+  width: 270px;
+  height: 700px;
+  left: 0px;
+  top: 139px;
+  background:lightsteelblue;
+  border-top-right-radius: 12px;
+  box-shadow: 0 5px 12px 0 #dcdeec;
+}
+.tags a {
+  color: white;
+  position: absolute;
 
-.signup-link a:hover {
-  color: crimson;
+  width: 255px;
+  height: 0px;
+  left: 0px;
+  display: inline-flexbox;
 }
-
+.tags-submit button{
+  top: 496px;
+  background: #FEE996;
+}
+.book {
+  border-right: 10px solid ;
+  position: relative;
+  z-index: 1;
+  padding: 30px 15px;
+  text-align: center;
+  border: 5px solid #f5f5f5;
+  border-radius: 12px;
+  width: 200px;
+  height: 270px; 
+  box-shadow: 0 5px 12px 0 #dcdeec;
+  background-color:#ffffff;
+  float: right;
+  top: 140px
+}
+.book-image{   
+  position: relative;
+  z-index: 1;
+  padding: 30px 15px;
+  text-align: center;
+  border: 1px solid crimson;
+  border-radius: 9px;
+  box-shadow: 0 5px 12px 0 #dcdeec;
+  background-color: #ffffff;
+  width: 170px;
+  height: 130px;
+  display: inline-block;
+}
+.book-image img {
+  width: 160px;
+  height: 130px;
+}
+.book-title{
+  margin-top: 20px;
+  fill: #f5f5f5;
+  width: auto;
+}
+.signup-link {
+  border-radius: 36px;
+  background: #FEE996;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: flex;
+  padding: 10px 16px;
+  letter-spacing: 2px;
+  align-items: center;
+  color: #444;
+  text-decoration: none
+}
+.login-link {
+  border-radius: 36px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: flex;
+  padding: 10px 16px;
+  letter-spacing: 2px;
+  align-items: center;
+  color: #444;
+  text-decoration: none
+}
 /* details styles */
 .details{
   position: relative;
@@ -79,6 +172,8 @@ h3{
   background: lightsteelblue;
   color: #ddd;
   border-radius: 20px;
+  padding: 80px;
+  border-right: 5px solid crimson;
 }
 .price {
   color: crimson;
@@ -156,7 +251,10 @@ textarea{
   border-radius: 10px;
   background:lightsteelblue;
 }
-button{
+.registration button :hover {
+  color: crimson;
+}
+.registration button{
   margin-top: 30px;
   border-radius: 36px;
   background: #FEE996;
@@ -174,3 +272,5 @@ button{
   font-size: 0.8em;
   font-weight: bold;
 }
+
+/* view book */

@@ -2,10 +2,15 @@ nav
             .site-title
                 a(href="/")
                     h1 BooksDIr
-            ul
-                li
-                    input(type="search", name="", placeholder="Search by Title, Author or genre ")
-                li
-                    a(href="/books/viewBooks") Books Available
-                li 
-                    a(href="/books/createBook") Add new Books
+            if(title === 'Login' || title === 'Signup' || title === 'Home')
+                ul
+                    li.login-link
+                        a(href="/accounts/login") Log in
+                    li.signup-link
+                        a(href="/accounts/signup") Sign Up
+            else
+                ul
+                    li
+                        a(href="/books/viewBooks") Books Available
+                    li 
+                        a(href="/books/createBook") Add new Books

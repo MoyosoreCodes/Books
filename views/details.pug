@@ -3,12 +3,15 @@ extends layout
 block content
     .details.content
             label By:  
-                a(href='#')
+                a(href=`/authors/${details.author}`)
                     h3 #{details.author}
             br
             .content
                 label Title:
                     h2  #{details.title}
+                br
+                label Genre: 
+                    h2 #{details.genre}
                 br
                 label Description:
                     p  #{details.description}

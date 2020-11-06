@@ -1,13 +1,28 @@
 extends layout 
  
 block content
-    .blogs.content
-        h2 All Books #{books.length}
-        if (books.length > 0)
-            each book in books
-                a(href=`/books/viewBooks/${book._id}`)
-                    h3 #{book.title}
-                    h3 #{book.author}
-                    p.snippet #{book.description}
-        else 
-            p There are no bo}oks to display
+    .sidebar
+        .tag-header
+            h5 GENRE
+        .tags
+            a(href="#") romance
+            a(href="#") adventure
+        .tag-submit
+        
+    .container
+        .search-bar
+            input(type="text", placeholder='Search by Author')
+            button(type='submit') SEARCH
+    if (books.length > 0)
+        each book in books
+            a(href=`/books/viewBooks/${book._id}`)
+                .book
+                    .book-image
+                        img(src="/juja-han-456323-unsplash.jpg", alt="book image here", width=200, height=270)
+                    .book-title
+                        h5 #{book.title}
+                    .book-price
+                        h6 $#{book.price}  
+    else 
+        p There are no books to display
+            
