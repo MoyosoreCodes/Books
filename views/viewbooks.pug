@@ -5,8 +5,12 @@ block content
         .tag-header
             h5 GENRE
         .tags
-            a(href="#") romance
-            a(href="#") adventure
+            ul
+                li
+                    a(href="#") romance
+            ul
+                li
+                    a(href="#") adventure
         .tag-submit
         
     .container
@@ -16,13 +20,15 @@ block content
     if (books.length > 0)
         each book in books
             a(href=`/books/viewBooks/${book._id}`)
-                .book
-                    .book-image
-                        img(src="/juja-han-456323-unsplash.jpg", alt="book image here", width=200, height=270)
-                    .book-title
-                        h5 #{book.title}
-                    .book-price
-                        h6 $#{book.price}  
+                    .book
+                        .book-image
+                            img(src="/juja-han-456323-unsplash.jpg", alt="book image here", width=200, height=270)
+                        .book-title
+                            h5 #{book.title}
+                        .book-price
+                            h6 $#{book.price}  
     else 
-        p There are no books to display
+        .book-container
+            .empty
+                p There are  currently no books to display
             

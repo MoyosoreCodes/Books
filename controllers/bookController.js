@@ -30,26 +30,26 @@ const createBooks_get = (req, res) => {
 };
 
 const createBooks = (req, res) => {
+    req.body.author = req.user.fullname;
     const book = new Book(req.body);
 
     book.save()
-        .then((result) => {
+        .then( () => {
             res.redirect('/books/viewBooks');
         })
         .catch((err) => {
-            const errors = handleBookErrors(err);
-            res.json({ errors });
+            console.log(err);
         });
 };
 
 const viewBooks = (req , res) => {
-    const books = Book.find()
-                 .then((result) => {
-                     res.render("viewBooks", {title: "View", books: result});
-                 })
-                 .catch((err) => {
-                     console.log(err);
-                 });
+     Book.find()
+        .then((result) => {
+            res.render("viewBooks", {title: "View", books: result});
+        })
+        .catch((err) => {
+            console.log(err);
+        }); 
 };
 
 const viewBooksById = (req, res) => {

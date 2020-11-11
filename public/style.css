@@ -56,71 +56,99 @@ h3{
 }
 
  /* index styles */
+
 .container {
   position: absolute;
-  height: 134px;
-  left: 275px;
-  right: 27px;
-  top: 148px;
-  background: lightslategray;
-  box-shadow: 0 5px 12px 0 #dcdeec;
-  border-right: 5px solid crimson;
+  height: 50px;
+  left: 245px;
+  right: 75px;
+  top: 108px;
+  border-radius: 12px;
 }
 .search-bar input{
-  height: 25px;
+  height: 29px;
   width:  300px;
-  position: relative;
+  position: absolute;
   left: 700px;
-  top: 27px;
+  top: 0;
   border-radius: 5px;
+  border: 0;
 }
 .search-bar button {
-  left: 310px;
-  top: 27px;
-  position: relative;
+  left: 590px;
+  right: 25px;
+  border-radius: 36px;
+  background: #FEE996;
+  border:0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: block;
+  padding: 10px 16px;
+  letter-spacing: 2px;
+  position: absolute;
 }
 .sidebar{
   position: absolute;
-  width: 270px;
-  height: 700px;
+  width: 210px;
+  height: 500px;
   left: 0px;
   top: 139px;
-  background:lightsteelblue;
+  align-items: flex-end;
+  background:#dcdeec;
+  border-left: 5px solid crimson;
   border-top-right-radius: 12px;
   box-shadow: 0 5px 12px 0 #dcdeec;
+  overflow: hidden;
 }
 .tags a {
-  color: white;
-  position: absolute;
-
+  color: black;
+  padding: 20px;
+  margin-bottom: 5px;
   width: 255px;
-  height: 0px;
+  height: 56px;
   left: 0px;
-  display: inline-flexbox;
+  top: 408px;
+  align-items: center;
 }
 .tags-submit button{
   top: 496px;
+  margin-top: 30px;
+  border-radius: 36px;
   background: #FEE996;
+  border:0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: block;
+  padding: 10px 16px;
+  letter-spacing: 2px;
 }
+ .empty p {
+  position: relative; 
+  top: 160px;
+  left: 350px;
+  text-transform: uppercase;
+ }
 .book {
   border-right: 10px solid ;
   position: relative;
   z-index: 1;
-  padding: 30px 15px;
+  padding: 30px 20px;
   text-align: center;
   border: 5px solid #f5f5f5;
   border-radius: 12px;
   width: 200px;
-  height: 270px; 
-  box-shadow: 0 5px 12px 0 #dcdeec;
+  height: 220px; 
   background-color:#ffffff;
   float: right;
-  top: 140px
+  top: 40px;
+  overflow: hidden;
 }
 .book-image{   
   position: relative;
   z-index: 1;
-  padding: 30px 15px;
+  padding: 17px 12px;
   text-align: center;
   border: 1px solid crimson;
   border-radius: 9px;
@@ -132,7 +160,7 @@ h3{
 }
 .book-image img {
   width: 160px;
-  height: 130px;
+  height: 120px;
 }
 .book-title{
   margin-top: 20px;

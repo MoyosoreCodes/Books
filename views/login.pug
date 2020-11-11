@@ -1,13 +1,16 @@
 extends layout
 
 block content
+   
     .registration
+        .error
+            if (errors.length > 0)
+                each error in errors
+                    li #{error}
         form(action="/accounts/login", method="post")
             h2 Sign in
             label Email:
             input(type="text", name="email" )
-            .email.error
             label Password:
             input(type="password", name="password")
-            .password.error
             button(type="submit") Sign in

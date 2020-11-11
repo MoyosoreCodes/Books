@@ -1,27 +1,26 @@
 extends layout
 
 block content
+    .error
+        if (errors.length > 0)
+                each error in errors
+                li #{errors[i]}
     .registration
         form(action="/accounts/signup", method="post")
             h2 Sign Up
             label Firstname:
             input(type="text", name="firstname" )
-            .firstname.error
             label Lastname:
             input(type="text", name="lastname")
-            .lastname.error
             label Email:
             input(type="text", name="email" )
-            .email.error
             label Password:
             input(type="password", name="password" )
-            .password.error
             label Gender:
             select(name="gender" required)
                 option(value="") --Select Gender--
                 option(value="Male") Male
                 option(value="Female") Female
             label Country:
-            input(type="text", name="country" required)  
-            .country.error       
+            input(type="text", name="country" required)
             button(type="submit") Sign Up
