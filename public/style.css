@@ -20,7 +20,6 @@ nav{
   padding-bottom: 10px;
   border-bottom: 1px solid #ddd;
   text-transform: uppercase;
-  
 }
 nav ul{
   display: flex;
@@ -52,7 +51,7 @@ h3{
 }
 
 .content{
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
  /* index styles */
@@ -193,33 +192,88 @@ h3{
   text-decoration: none
 }
 /* details styles */
-.details{
-  position: relative;
+.display{
   align-content: center;
-  padding: 30px;
-  background: lightsteelblue;
-  color: #ddd;
-  border-radius: 20px;
-  padding: 80px;
-  border-right: 5px solid crimson;
+}
+.display label{
+  padding: 5px;
 }
 .price {
   color: crimson;
 }
-
 .details h3:hover{
   color: crimson
 }
 .details button:hover{
   color: crimson;
 }
-.delete{
+.productImage{
   position: absolute;
-  top: 0;
-  right: 0;
-  border-radius: 50%;
-  padding: 8px;
+  top: 140px;
+  overflow: hidden;
+  right: 90px;
+  padding: 10px;
+  height: 39%;
+  border-radius: 20px;
+  border: 5px solid;
 }
+.download button{
+  position: absolute;
+  top: 430px;
+  right: 90px;
+  margin-top: 20px;
+  border-radius: 36px;
+  background: #FEE996;
+  border:0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: flex;
+  padding: 10px 16px;
+  letter-spacing: 2px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid crimson;
+}
+.read button{
+  position: absolute;
+  top: 430px;
+  right: 250px;
+  margin-top: 20px;
+  border-radius: 36px;
+  background: #FEE996;
+  border:0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: flex;
+  padding: 10px 16px;
+  letter-spacing: 2px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid crimson;
+}
+.details-before-picture  {
+  top: 160px;
+  left: 370px;
+  display:inline-table;
+  position: absolute;
+  right: 20px;
+  text-decoration: none;
+}
+.description{
+  position: absolute;
+  padding: 20px;
+  border: 5px solid #f5f5f5;
+  left: 150px;
+  width: 500px;
+  height: auto;
+  border-radius: 12px;
+  border-right: 2px solid crimson;
+  align-content: center;
+}
+
+
 /* create styles */
 .create-blog form{
   max-width: 400px;
@@ -236,6 +290,13 @@ h3{
 .create-blog label{
   display: block;
   margin-top: 24px;
+}
+.file-upload{
+  position: relative;
+  top: 0;
+  left: 10px;
+  border-radius: 50%;
+  padding: 8px;   
 }
 textarea{
   height: 120px;
@@ -294,7 +355,7 @@ textarea{
   padding: 10px 16px;
   letter-spacing: 2px;
 }
-.error{
+.error p{
   color: red;
   margin: 10px 2px;
   font-size: 0.8em;

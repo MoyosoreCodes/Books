@@ -2,7 +2,7 @@ extends layout
 
 block content
     .create-blog.content
-        form(action="/books/createBook", method="post")
+        form(action="/books/createBook", method="post" enctype="multipart/form-data")
             label Book title:
             input(type="text", name="title" required)
             label ISBN:
@@ -20,4 +20,7 @@ block content
             textarea( name="description", cols="30", rows="10")                
             label Price:
             input(type="number", name="price" required)
+            .file-upload
+                input(type="file", name="productImage")
+            
             button(type="submit") Submit

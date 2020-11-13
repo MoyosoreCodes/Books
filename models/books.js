@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
+    productImage:{
+        type: String
+    },
     title: {
         type: String,
         required: [true, 'You have not entered a book title']
@@ -18,7 +21,7 @@ const bookSchema = new Schema({
     }, 
     publishDate: {
         type: Date,
-        required: [true, 'Date must be Entered']
+        default: Date.now().toString()
     }, 
     price: {
         type: Number,

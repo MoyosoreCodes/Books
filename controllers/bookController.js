@@ -1,26 +1,5 @@
 var Book = require("../models/books");
 
-
-const handleBookErrors = (err) => {
-    let errors = {
-        title: '',
-        isbn: '',
-        publishDate: '',
-        price: '',
-    };
-
-    if (err.message === 11000){
-        errors.isbn = "That isbn has already been registered";
-    }
-
-    if ( err.message.includes('User validation failed')){
-        Object.values(err.errors).forEach(({properties}) => {
-            errors[properties.path] = properties.message;
-        });
-    }
-    return errors
-};
-
 const home = (req, res) => {
     res.redirect("/books/viewbooks");
 };
@@ -29,13 +8,21 @@ const createBooks_get = (req, res) => {
     res.render("newbooks", { title: "New Book"});
 };
 
-const createBooks = (req, res) => {
-    req.body.author = req.user.fullname;
-    const book = new Book(req.body);
+const createBooks = (req, res) => { 
+    const book = new Book({
+        productImage: req.file.path,
+        title: req.body.title,
+        isbn: req.body.isbn,
+        author: req.user.fullname,
+        publishDate: req.body.publishDate,
+        price: req.body.price,
+        genre: req.body.genre,
+        description: req.body.description
+    });
 
     book.save()
         .then( () => {
-            res.redirect('/books/viewBooks');
+           res.redirect('/books/viewBooks');
         })
         .catch((err) => {
             console.log(err);

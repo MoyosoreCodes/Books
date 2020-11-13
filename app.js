@@ -12,7 +12,7 @@ const bcrypt = require('bcrypt');
 const app = express();
 
 
-const dbUri = process.env.MONGODB_URI || "mongodb://localhost:27017/Bookdb";
+const dbUri =  "mongodb://localhost:27017/Bookdb";
 const port = 5000;
 
 
@@ -33,6 +33,7 @@ app.get('/', (req, res) =>{
 
 app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, "public")));
+app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cookieParser());

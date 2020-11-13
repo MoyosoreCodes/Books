@@ -1,25 +1,32 @@
 extends layout 
  
 block content
-    .details.content
+        .display
+            img.productImage(src=`/${details.productImage}`, alt="image should be here", srcset="")
             label By:  
                 a(href=`/authors/${details.author}`)
                     h3 #{details.author}
             br
-            .content
+            .title
                 label Title:
                     h2  #{details.title}
                 br
-                label Genre: 
-                    h2 #{details.genre}
                 br
-                label Description:
+            
+            label Description:
+            .description
                     p  #{details.description}
+
+            .details-before-picture
+                label.genre Genre: 
+                    h3 #{details.genre}
                 br
-                label Publish Date:
-                    p  #{details.publishDate}
+                label.date Publish Date:
+                    h3  #{details.publishDate}
                 br
                 label Price
-                    p.price $#{details.price}
-                img.delete(src="", alt="image should be here", srcset="")
-            button(type='submit') purchase
+                    h3.price $#{details.price}
+            .download
+                button(type='submit') Download
+            .read
+                button(type='submit') Read Online
