@@ -3,8 +3,15 @@ const passport = require('passport');
 const router = express.Router();
 const accountController = require('../controllers/accountControllers');
 
-router.get('/signup', accountController.getSignup);
-router.get('/login', accountController.getLogin);
+const Authenticate = (req, res, next) => {
+    if (req.isAuthenticated()){        
+        return res.redirect('/books/viewBooks');
+    }
+    next();
+};
+
+router.get('/signup', Authenticate, accountController.getSignup);
+router.get('/login', Authenticate, accountController.getLogin);
 router.post('/signup', accountController.postSignup);
 router.post('/login',passport.authenticate('local', {
     failureFlash: true, 

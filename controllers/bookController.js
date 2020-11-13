@@ -5,7 +5,8 @@ const home = (req, res) => {
 };
 
 const createBooks_get = (req, res) => {
-    res.render("newbooks", { title: "New Book"});
+    const errors = req.flash().error || [];
+    res.render("newbooks", { title: "New Book", errors});
 };
 
 const createBooks = (req, res) => { 

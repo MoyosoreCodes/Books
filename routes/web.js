@@ -6,15 +6,6 @@ const path = require('path');
 const fs = require('fs');
 
 
-const createDir = (user) => {
-    if (!fs.existsSync(path.join(__dirname, `${user}`))) {
-        fs.mkdir(path.join(__dirname,`${user}`), (err)=> {
-            if (err){
-                console.log(err);
-            }
-        });
-    }
-};
         
 const ensureAuthenticated = (req, res, next) => {
     if (!req.isAuthenticated()){        
