@@ -100,28 +100,42 @@ h3{
   box-shadow: 0 5px 12px 0 #dcdeec;
   overflow: hidden;
 }
-.tags a {
+.sidebar h3 {
+  margin-top: 19px;
+}
+.tags li {
   color: black;
-  padding: 20px;
-  margin-bottom: 5px;
+  padding: 10px;
+  margin-left: 5px;
   width: 255px;
   height: 56px;
   left: 0px;
-  top: 408px;
+  top: 278px;
   align-items: center;
+  text-transform: uppercase;
 }
-.tags-submit button{
-  top: 496px;
-  margin-top: 30px;
+.tag-submit button {
+  top: 420px;
+  margin-top: 50px;
   border-radius: 36px;
   background: #FEE996;
   border:0;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 0.8em;
-  display: block;
+  position: relative;
   padding: 10px 16px;
   letter-spacing: 2px;
+  left: 90px;
+}
+.tag-placeholder {
+  position: inherit;
+  align-content: flex-end;
+}
+.tag-header{
+  display: block;
+  background: #FEE996;
+  text-align: center;
 }
  .empty p {
   position: relative; 
@@ -140,8 +154,9 @@ h3{
   width: 200px;
   height: 220px; 
   background-color:#ffffff;
-  float: right;
-  top: 40px;
+  left: 180px;
+  float: left;
+  top: 20px;
   overflow: hidden;
 }
 .book-image{   
@@ -210,7 +225,7 @@ h3{
 .productImage{
   position: absolute;
   top: 140px;
-  width: 400px;
+  width: 270px;
   overflow: hidden;
   right: 90px;
   padding: 10px;
