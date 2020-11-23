@@ -1,21 +1,33 @@
 extends layout
 
 block content
-    .error
-        if (errors.length > 0)
-                each error in errors
-                    p #{errors}
     .registration
         form(action="/accounts/signup", method="post")
             h2 Sign Up
             label Firstname:
             input(type="text", name="firstname" )
+            .error
+                if (errors)
+                    each error in errors
+                        p #{error.firstname}
             label Lastname:
             input(type="text", name="lastname")
+            .error
+                if (errors)
+                    each error in errors
+                        p #{error.lastname}
             label Email:
             input(type="text", name="email" )
+            .error
+                if (errors)
+                    each error in errors
+                        p #{error.email}
             label Password:
             input(type="password", name="password" )
+            .error
+                if (errors)
+                    each error in errors
+                        p #{error.password}
             label Gender:
             select(name="gender" required)
                 option(value="") --Select Gender--

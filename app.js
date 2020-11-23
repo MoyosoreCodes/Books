@@ -41,7 +41,8 @@ app.use(flash());
 app.use(session({
     secret: 'somerandomsecret',
     saveUninitialized: false, 
-    resave: false
+    resave: false,
+    cookie: { maxAge: 20000}
     })
 );
 
@@ -65,6 +66,7 @@ passport.use(new LocalStrategy( {
             return done(null, false, req.flash('error', "Incorrect password"));
         }
 
+        
         return done(null, user);
     }
 ));
@@ -79,5 +81,6 @@ passport.deserializeUser((user ,done)=> {
 
 
 app.use('/api', require('./routes/api'));
-app.use('/books', require('./routes/web'))
+app.use('/books', require('./routes/web'));
+app.use('/authors', require('./routes/author'));
 app.use('/accounts', require('./routes/account'));

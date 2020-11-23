@@ -16,11 +16,10 @@ const bookSchema = new Schema({
         unique: true,
     }, 
     author: {
-        type: String,
-        required: true
+        type: String
     }, 
     publishDate: {
-        type: Date,
+        type: String,
         default: Date.now().toString()
     }, 
     price: {
@@ -28,11 +27,20 @@ const bookSchema = new Schema({
         required: [true, 'Price must be Entered']
     }, 
     genre: {
-        type: String
+        type: String,
+        lowercase:true
     }, 
     description: {
         type: String,
         default: "No description added"
+    }, 
+    createdBy:{
+        id: {
+            type: String
+        },
+        fullname: {
+            type: String   
+        }
     }
 }, {timestamps : true});
 

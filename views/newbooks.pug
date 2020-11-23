@@ -5,6 +5,8 @@ block content
         form(action="/books/createBook", method="post" enctype="multipart/form-data")
             label Book title:
             input(type="text", name="title" required)
+            label Author:
+            input(type="text", name="author" required)
             label ISBN:
             input(type="number", name="isbn")
             label Publish Date:
@@ -16,6 +18,7 @@ block content
                 option(value="Adventure") Adventure
                 option(value="Bio & History") Bio & History
                 option(value="Romance") Romance
+                option(value="War") War
             label Description:
             textarea( name="description", cols="30", rows="10")                
             label Price:

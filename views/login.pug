@@ -4,7 +4,7 @@ block content
    
     .registration
         .error
-            if (errors.length > 0)
+            if (errors)
                 each error in errors
                     p #{error}
         form(action="/accounts/login", method="post")

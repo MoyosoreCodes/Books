@@ -2,15 +2,24 @@ nav
             .site-title
                 a(href="/")
                     h1 BooksDIr
-            if(title === 'Login' || title === 'Signup' || title === 'Home')
+            if(title === 'Login' || title === 'Signup')
                 ul
                     li.login-link
                         a(href="/accounts/login") Log in
                     li.signup-link
-                        a(href="/accounts/signup") Sign Up
+                        a(href="/accounts/signup") Sign Up            
+            else if(title === 'home')
+                ul
+                    li.login-link
+                        if (isloggedin === true)
+                            a(href="#") Edit Profile
+                        else 
+                            a(href='#') View Profile
+                    li.signup-link
+                        a(href="/accounts/logout") logout
             else
                 ul
                     li
                         a(href="/books/viewBooks") Books Available
                     li 
-                        a(href="/books/createBook") Add new Books
+                        a(href="/books/createBook") Add your new Book

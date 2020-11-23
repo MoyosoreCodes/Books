@@ -7,7 +7,7 @@ const fs = require('fs');
 
 
         
-const ensureAuthenticated = (req, res, next) => {
+const Authenticate = (req, res, next) => {
     if (!req.isAuthenticated()){        
         return res.redirect('/accounts/login');
     }
@@ -29,7 +29,7 @@ const uploads = multer({
         fileSize: 1024 * 1024 * 10
     },
     fileFilter: (req, file, done) => {
-        if(!(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png')){
+        if(!(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype === 'image/JFIF')){
             done(null, false);
         }
         done(null, true);
@@ -37,10 +37,11 @@ const uploads = multer({
 })
 
 
-router.get("/", ensureAuthenticated , bookController.home);
-router.get("/createBook", ensureAuthenticated , bookController.createBooks_get);
-router.post('/createBook', ensureAuthenticated , uploads.single('productImage') ,bookController.createBooks);
-router.get("/viewBooks" , ensureAuthenticated ,  uploads.single('productImage') , bookController.viewBooks);
-router.get('/viewBooks/:id', ensureAuthenticated , uploads.single('productImage') , bookController.viewBooksById);
+router.get("/", Authenticate , bookController.home);
+router.get("/createBook", Authenticate , bookController.createBooks_get);
+router.post('/createBook', Authenticate , uploads.single('productImage') ,bookController.createBooks);
+router.get("/viewBooks" , Authenticate ,  uploads.single('productImage') , bookController.viewBooks);
+router.get('/viewBooks/:id', Authenticate , uploads.single('productImage') , bookController.viewBooksById);
+router.post('/search', uploads.single('productImage'), bookController.search)
 
 module.exports = router;

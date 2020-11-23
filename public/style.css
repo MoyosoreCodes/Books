@@ -89,8 +89,8 @@ h3{
 }
 .sidebar{
   position: absolute;
-  width: 210px;
-  height: 500px;
+  width: 270px;
+  height: auto;
   left: 0px;
   top: 139px;
   align-items: flex-end;
@@ -105,7 +105,7 @@ h3{
 }
 .tags li {
   color: black;
-  padding: 10px;
+  padding: 2px;
   margin-left: 5px;
   width: 255px;
   height: 56px;
@@ -117,25 +117,30 @@ h3{
 .tag-submit button {
   top: 420px;
   margin-top: 50px;
+  margin-left: 55px;
   border-radius: 36px;
   background: #FEE996;
   border:0;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 0.8em;
-  position: relative;
   padding: 10px 16px;
   letter-spacing: 2px;
-  left: 90px;
 }
 .tag-placeholder {
   position: inherit;
   align-content: flex-end;
 }
 .tag-header{
-  display: block;
   background: #FEE996;
   text-align: center;
+  margin-bottom: 0;
+}
+.tag select {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 8px;
 }
  .empty p {
   position: relative; 
@@ -154,7 +159,7 @@ h3{
   width: 200px;
   height: 220px; 
   background-color:#ffffff;
-  left: 180px;
+  left: 220px;
   float: left;
   top: 20px;
   overflow: hidden;
@@ -271,7 +276,7 @@ h3{
 }
 .details-before-picture  {
   top: 160px;
-  left: 370px;
+  left: 600px;
   display:inline-table;
   position: absolute;
   right: 20px;
@@ -281,12 +286,15 @@ h3{
   position: absolute;
   padding: 20px;
   border: 5px solid #f5f5f5;
-  left: 150px;
+  left: 100px;
   width: 500px;
   height: auto;
   border-radius: 12px;
   border-right: 2px solid crimson;
   align-content: center;
+}
+.description p {
+  text-align: left;
 }
 
 
