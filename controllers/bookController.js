@@ -47,6 +47,7 @@ const viewBooks = (req , res) => {
             console.log(err);
         });
     }
+    
     Book.find()
     .where('genre', genre)
     .then(result => {

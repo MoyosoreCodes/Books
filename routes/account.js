@@ -41,10 +41,13 @@ router.post(
     accountController.postSignup);
 
 router.post('/login', passport.authenticate('local', {
-    failureFlash: true, 
-    failureRedirect: '/accounts/login',
-    successRedirect: '/'
-}));
+        failureFlash: true, 
+        failureRedirect: '/accounts/login',
+        successRedirect: '/'
+    })
+);
+
+
 router.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/')

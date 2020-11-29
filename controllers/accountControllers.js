@@ -7,9 +7,8 @@ const {body, validationResult} =  require('express-validator');
 
 const getLogin = (req, res) => {
     const errors = req.flash('error');
-    const success = req.flash('success')
     console.log(success)
-    res.render('login', {title: 'Login', errors, success});
+    res.render('login', {title: 'Login', errors});
 };
 
 const getSignup = (req, res) => {
@@ -31,7 +30,6 @@ const postSignup = async (req, res) => {
         const errors = validationResult(req);
        
         if(!errors.isEmpty()) {
-            const errors =  validationResult(req)
             console.log(errors);
 
             const errorMessage = []
