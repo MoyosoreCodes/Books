@@ -11,9 +11,8 @@ const User = require('./models/users');
 const bcrypt = require('bcrypt');
 const app = express();
 
-
-const dbUri =  "mongodb://localhost:27017/Bookdb";
-const port = 5000;
+const dbUri =  process.env.MONGODB_URI || "mongodb://localhost:27017/Bookdb";
+const port =  process.env.PORT || 5000;
 
 
 mongoose.connect(dbUri, { useNewUrlParser: true , useUnifiedTopology: true , useFindAndModify: false, useCreateIndex: true})
