@@ -9,7 +9,7 @@ const fs = require('fs');
         
 const Authenticate = (req, res, next) => {
     if (!req.isAuthenticated()){        
-        return res.redirect('/accounts/login');
+        return res.status(401).redirect('/accounts/login');
     }
     next();
 };

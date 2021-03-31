@@ -7,7 +7,7 @@ const Users = require('../models/users');
 
 const isAuthorized = (req, res, next) => {
     if (req.isAuthenticated()){        
-        return res.redirect('/books/viewBooks');
+        return res.status(200).redirect('/books/viewBooks');
     }
     next();
 };

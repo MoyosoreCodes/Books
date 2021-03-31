@@ -7,7 +7,7 @@ const {body, validationResult} =  require('express-validator');
 
 const getLogin = (req, res) => {
     const errors = req.flash('error');
-    console.log(success)
+   // console.log(success)
     res.render('login', {title: 'Login', errors});
 };
 

@@ -11,7 +11,7 @@ const User = require('./models/users');
 const bcrypt = require('bcrypt');
 const app = express();
 
-const dbUri =  process.env.MONGODB_URI || "mongodb://localhost:27017/Bookdb";
+const dbUri =  "mongodb://localhost:27017/Bookdb";
 const port =  process.env.PORT || 5000;
 
 
@@ -64,7 +64,6 @@ passport.use(new LocalStrategy( {
         if (!match){
             return done(null, false, req.flash('error', "Incorrect password"));
         }
-
         
         return done(null, user);
     }
