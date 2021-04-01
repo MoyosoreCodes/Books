@@ -1,4 +1,4 @@
-const bookModel = require("../models/books");
+const bookModel = require("../models/bookModel");
 
 
 
