@@ -70,7 +70,7 @@ passport.use(new LocalStrategy( {
 ));
 
 passport.serializeUser( (user, done) =>{
-    done(null, {id: user._id, fullname: user.firstname +" "+ user.lastname});
+    done(null, json.parse(user));
 });
 
 passport.deserializeUser((user ,done)=> {

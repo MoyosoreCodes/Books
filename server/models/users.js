@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
-const userSchema = new Schema ({
+const userModel = {
     firstname: {
         type: String,
         required: true
@@ -22,13 +22,11 @@ const userSchema = new Schema ({
     },
     gender: {
         type: String,
-    },
-    country: {
-        type: String, 
-        required: true
     }
-}, {timestamps: true});
+}
+const userSchema = new Schema (userModel, {timestamps: true});
 
+mongoose.plugin(require('mongoose-autopopulate'));
 
-const Users =  mongoose.model('User', userSchema);
+const Users =  mongoose.model('User', userSchema, 'users');
 module.exports = Users;
