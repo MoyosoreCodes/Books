@@ -37,11 +37,11 @@ const uploads = multer({
 })
 
 
-router.get("/", Authenticate , bookController.home);
+router.get("/", bookController.home);
 router.get("/createBook", Authenticate , bookController.createBooks_get);
 router.post('/createBook', Authenticate , uploads.single('productImage') ,bookController.createBooks);
-router.get("/viewBooks" , Authenticate ,  uploads.single('productImage') , bookController.viewBooks);
-router.get('/viewBooks/:id', Authenticate , uploads.single('productImage') , bookController.viewBooksById);
+router.get("/viewBooks" ,  uploads.single('productImage') , bookController.viewBooks);
+router.get('/viewBooks/:id' , uploads.single('productImage') , bookController.viewBooksById);
 router.post('/search', uploads.single('productImage'), bookController.search)
 
 module.exports = router;

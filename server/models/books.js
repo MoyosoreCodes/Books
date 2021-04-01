@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const bookModel = {
+const bookObject = {
     productImage:{
         type: String
     },
@@ -20,14 +20,15 @@ const bookModel = {
     }, 
     publishDate: {
         type: String,
-        default: Date.now().toString()
+        default: new Date()
     }, 
     price: {
         type: Number,
-        required: [true, 'Price must be Entered']
+        default: 0
+        //required: [true, 'Price must be Entered']
     }, 
-    genre: {
-        type: String,
+    tags: {
+        type: [String],
         lowercase:true
     }, 
     description: {
@@ -38,10 +39,17 @@ const bookModel = {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
         autopopulate: true
+    },
+    likecount: {
+        type: Number,
+        default: 0
+    },
+    reviews: {
+        type: [String]
     }
 }
 
-const bookSchema = new Schema(bookModel, {timestamps : true});
+const bookSchema = new Schema(bookObject, {timestamps : true});
 mongoose.plugin(require('mongoose-autopopulate'));
 
 const Book = mongoose.model("Book", bookSchema);

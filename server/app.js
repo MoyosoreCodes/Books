@@ -10,6 +10,7 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/users');
 const bcrypt = require('bcrypt');
 const app = express();
+const cors = require('cors')
 
 const dbUri =  "mongodb://localhost:27017/Bookdb";
 const port =  process.env.PORT || 5000;
@@ -26,15 +27,11 @@ mongoose.connect(dbUri, { useNewUrlParser: true , useUnifiedTopology: true , use
         console.log(err);
     });
 
-app.get('/', (req, res) =>{
-    res.redirect('/books/viewBooks');
-});
-
-app.set('view engine', 'pug');
+//app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, "public")));
 app.use('/uploads', express.static('uploads'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true}));
 app.use(cookieParser());
 app.use(flash());
 app.use(session({
@@ -44,7 +41,7 @@ app.use(session({
     cookie: { maxAge: 20000}
     })
 );
-
+app.use(cors())
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -78,7 +75,7 @@ passport.deserializeUser((user ,done)=> {
 });
 
 
-app.use('/api', require('./routes/api'));
+//app.use('/api', require('./routes/api'));
 app.use('/books', require('./routes/web'));
-app.use('/authors', require('./routes/author'));
+//app.use('/authors', require('./routes/author'));
 app.use('/accounts', require('./routes/account'));

@@ -1,7 +1,94 @@
-var Book = require("../models/books");
+const bookModel = require("../models/books");
 
+
+
+module.exports = {
+    create: async (data) => {
+
+        try {
+            const createdBooks = await bookModel.create(data);
+            return {
+                status: 200,
+                message: 'book creation successful',
+                data: createdBooks
+            }
+
+        } catch (error) {
+            console.log(error);
+
+            return {
+                status: 500,
+                message: 'book creation error',
+                data: error
+            }
+        }   
+    },
+
+    list: async (filter = {}) => {
+        //remember to add query
+        try {
+            const foundBooks = await bookModel.find(filter);    
+            return {
+                status: 200,
+                message: 'book(s) found',
+                data: foundBooks
+            }
+
+        } catch (error) {
+            console.log(error);
+
+            return {
+                status: 500,
+                message: 'Error',
+                data: error
+            }
+        }
+    },
+    
+    read: async () => {
+        try {
+            const books = await bookModel.find();
+            return {
+                status: 200,
+                message: 'book(s) found',
+                data: books
+            }
+        } catch (error) {
+            console.log(error);
+            return {
+                status: 500,
+                message: 'Error',
+                data: error
+            }
+        }
+    },
+
+    delete: async (data) => {
+        try {
+            const foundBook =  await bookModel.findOne({_id: data._id})
+            const book = await bookModel.deleteOne(foundBook._id);
+            if (!book) {
+                return {
+                status: 400,
+                message: "book deletion Failed",
+                data: null
+                }
+            }
+            return { message: "Service deleted successfully", status: 200, data: book };
+           
+        } catch (error) {
+            console.log(error);
+            return {
+                status: 500,
+                message: 'Error',
+                data: error
+            }
+        }
+    }
+}
+/*
 const home = (req, res) => {
-    res.redirect("/books/viewbooks")
+    res.redirect("/")
  
 };
 
@@ -94,3 +181,4 @@ module.exports = {
     viewBooksById,
     search
 }
+*/
