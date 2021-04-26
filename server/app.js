@@ -7,19 +7,33 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const User = require('./models/users');
+const User = require('./models/userModel');
 const bcrypt = require('bcrypt');
 const app = express();
-const cors = require('cors')
+const cors = require('cors');
+const http = require('http');
+const socketio = require('socket.io');
 
-const dbUri =  "mongodb://localhost:27017/Bookdb";
+const server = http.createServer(app);
+const io = socketio(server)
+const dbUri = process.env.DBURI || "mongodb://localhost:27017/Bookdb";
 const port =  process.env.PORT || 5000;
+
+
+//Run when client connects
+io.on('connection', (socket) => {
+    console.log('new user connection');
+
+    socket.on('disconnect', () => {
+        console.log('user disconnected');
+    })
+})
 
 
 mongoose.connect(dbUri, { useNewUrlParser: true , useUnifiedTopology: true , useFindAndModify: false, useCreateIndex: true})
     .then(() => {
         console.log('Connection Succesful');
-        app.listen(port, () => {
+        server.listen(port, () => {
             console.log(`listening at ${port}`);
         });
     })
@@ -37,13 +51,17 @@ app.use(flash());
 app.use(session({
     secret: 'somerandomsecret',
     saveUninitialized: false, 
-    resave: false,
+    resave: true,
     cookie: { maxAge: 20000}
     })
 );
 app.use(cors())
 app.use(passport.initialize());
 app.use(passport.session());
+app.get('/', () => {
+    console.log('server is up and running');
+    socket.on
+})
 
 passport.use(new LocalStrategy( {
     usernameField: 'email',
@@ -75,7 +93,8 @@ passport.deserializeUser((user ,done)=> {
 });
 
 
+app.use('/books', require('./routes/books'));
+
 //app.use('/api', require('./routes/api'));
-app.use('/books', require('./routes/web'));
 //app.use('/authors', require('./routes/author'));
-app.use('/accounts', require('./routes/account'));
+//app.use('/accounts', require('./routes/account'));

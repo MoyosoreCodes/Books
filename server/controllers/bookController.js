@@ -1,5 +1,26 @@
 const bookModel = require("../models/bookModel");
 
+const storage = multer.diskStorage({
+    destination: (req, file, done) => {
+        done(null, `./uploads/`);
+    },
+    filename: (req, file, done) => {
+        done(null, req.body.title +'CoverPAGE'+ file.originalname);
+    } 
+});
+
+const uploads = multer({
+    storage, 
+    limits: {
+        fileSize: 1024 * 1024 * 10
+    },
+    fileFilter: (req, file, done) => {
+        if(!(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype === 'image/JFIF')){
+            done(null, false);
+        }
+        done(null, true);
+    }
+})
 
 
 module.exports = {
@@ -24,7 +45,37 @@ module.exports = {
         }   
     },
 
-    list: async (filter = {}) => {
+    update: async (id, data) => {
+        try {
+            const foundbook = await bookModel.findOne({_id: id});
+            if(!foundbooks) {
+                return {
+                    status: 400,
+                    message: "book not found",
+                    data: null
+                }
+            }
+
+            const updatedBook = await bookModel.findByIdAndUpdate({_id: foundbook._id}, data);
+            if (!updatedBook) {
+                return {
+                    status: 500,
+                    message: "error updating book",
+                    data: null
+                }
+            }
+
+            return {
+                status: 200,
+                message: 'book update successful',
+                data: updatedBook
+            }
+        } catch (error) {
+            
+        }
+    },
+
+    read: async (filter = {}) => {
         //remember to add query
         try {
             const foundBooks = await bookModel.find(filter);    
@@ -36,7 +87,6 @@ module.exports = {
 
         } catch (error) {
             console.log(error);
-
             return {
                 status: 500,
                 message: 'Error',
@@ -45,7 +95,7 @@ module.exports = {
         }
     },
     
-    read: async () => {
+    list: async () => {
         try {
             const books = await bookModel.find();
             return {
@@ -67,14 +117,14 @@ module.exports = {
         try {
             const foundBook =  await bookModel.findOne({_id: data._id})
             const book = await bookModel.deleteOne(foundBook._id);
-            if (!book) {
+            if (!foundBook) {
                 return {
                 status: 400,
                 message: "book deletion Failed",
                 data: null
                 }
             }
-            return { message: "Service deleted successfully", status: 200, data: book };
+            return { message: "deleted successfully", status: 200 };
            
         } catch (error) {
             console.log(error);

@@ -5,6 +5,7 @@ const {body, validationResult} =  require('express-validator');
 
 
 
+/*
 const getLogin = (req, res) => {
     const errors = req.flash('error');
    // console.log(success)
@@ -15,7 +16,6 @@ const getSignup = (req, res) => {
     const errors = req.flash('error');
      res.render('signup', {title: 'Signup', errors});
 };
-/*
 const maxAge =  24 * 60 * 60;
 const createToken = (id) => {
     return jwt.sign({id}, 'somekindasecret', {
@@ -95,7 +95,5 @@ const postLogin =(req, res) => {
 };
 */
 module.exports ={
-    getLogin,
-    getSignup,
     postSignup
 }

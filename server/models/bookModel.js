@@ -40,7 +40,7 @@ const bookObject = {
         ref: 'users',
         autopopulate: true
     },
-    likecount: {
+    likes: {
         type: Number,
         default: 0
     },
